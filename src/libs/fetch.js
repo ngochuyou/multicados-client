@@ -1,6 +1,4 @@
-import { server } from "./config/default.json";
-
-const url = server.url;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export async function $fetch(endpoint = null, options = {}, credentials = true, encode = true) {
 	if (endpoint == null) {
@@ -8,7 +6,7 @@ export async function $fetch(endpoint = null, options = {}, credentials = true, 
 	}
 	
 	try {
-		const res = await fetch(`${url}${options.encode === true ? encodeURI(endpoint) : endpoint}`, {
+		const res = await fetch(`${backendUrl}${options.encode === true ? encodeURI(endpoint) : endpoint}`, {
 			...options,
 			headers: {
 				...options.headers,
@@ -23,7 +21,7 @@ export async function $fetch(endpoint = null, options = {}, credentials = true, 
 	}
 }
 
-export async function fjson(endpoint = null, options = {}, encode = true) {
+export async function fjson(endpoint = null, options = {}, credentials = true, encode = true) {
 	const { headers } = options;
 	const [res, err] = await $fetch(endpoint, {
 		...options,
@@ -33,6 +31,7 @@ export async function fjson(endpoint = null, options = {}, encode = true) {
 		} : {
 			'Accept': 'application/json'
 		},
+		credentials,
 		encode
 	});
 
@@ -49,8 +48,4 @@ export async function fjson(endpoint = null, options = {}, encode = true) {
 	} catch (exception) {
 		return [null, exception];
 	}
-}
-
-export function asBlob(model = null) {
-	return model == null ? [null, "Model was null"] : new Blob([JSON.stringify(model)], { type: "application/json" });
 }

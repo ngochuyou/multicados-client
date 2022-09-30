@@ -1,11 +1,15 @@
 import './App.css';
 
+import AuthenticationContextProvider from './contexts/auth-context';
+import AlertContextProvider from './contexts/alert-context';
+
 function App() {
-	console.log(process.env.REACT_APP_BACKEND_URL);
 	return (
-		<div className="">
-			<h1>Hello user</h1>
-		</div>
+		<AlertContextProvider>
+			<AuthenticationContextProvider>
+
+			</AuthenticationContextProvider>
+		</AlertContextProvider>
 	);
 }
 
