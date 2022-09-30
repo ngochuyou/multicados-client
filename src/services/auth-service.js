@@ -1,3 +1,3 @@
 export const fetchPrincipal = (properties = []) => {
-	return [null, "Unable to fetch"];
+	return [null, "Can not fetch principal"];
 };

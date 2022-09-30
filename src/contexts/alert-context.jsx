@@ -16,20 +16,20 @@ export const useAlert = () => useContext(AlertContext);
 const PUSH = "PUSH";
 const EVICT = "EVICT";
 
-export const styles = {
+export const STYLES = {
 	ERROR: "ERROR",
 	SUCCESS: "SUCCESS",
 	INFO: "INFO"
 };
-const styleMap = {
-	[styles.ERROR]: props => <Error {...props}></Error>,
-	[styles.SUCCESS]: props => <Success {...props}></Success>,
-	[styles.INFO]: props => <Info {...props}></Info>
+const STYLE_MAPPERS = {
+	[STYLES.ERROR]: props => <Error {...props}></Error>,
+	[STYLES.SUCCESS]: props => <Success {...props}></Success>,
+	[STYLES.INFO]: props => <Info {...props}></Info>
 };
 
 export default function AlertContextProvider({ children }) {
 	const doPush = (previousAlerts, { content = null, type = null }) =>
-		isString(content) && isString(type) && styleMap[type] != null
+		isString(content) && isString(type) && STYLE_MAPPERS[type] != null
 			? [...previousAlerts, { content, type }]
 			: previousAlerts;
 
@@ -70,7 +70,7 @@ function AlertList({ alerts = [] }) {
 	return (
 		<div className="uk-width-large uk-position-fixed uk-position-small uk-position-bottom-left">
 		{
-			alerts.map((alert, index) => styleMap[alert.type]({
+			alerts.map((alert, index) => STYLE_MAPPERS[alert.type]({
 				content: alert.content,
 				key: index,
 				onClose: () => evict(index)
