@@ -1,0 +1,67 @@
+:root {
+  --first-color: #1a2942;
+  --second-color: #edf0f0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+.backgroundf {
+  background-color: var(--first-color);
+  color: var(--second-color);
+}
+
+.backgrounds {
+  background-color: var(--second-color);
+  color: var(--first-color);
+}
+
+.colorf {
+  color: var(--second-color);
+}
+
+.colors {
+  color: var(--first-color);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  color: inherit;
+  opacity: .4;
+}
+
+.close:first-child+* {
+    margin-top: 0;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.main-nav a {
+  min-height: 100% !important;
+}
