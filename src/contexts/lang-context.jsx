@@ -18,13 +18,13 @@ export default function LanguageContextProvider({ children }) {
 	const [lang, setLang] = useState(localStorage.getItem(LOCAL_STORAGE_LANG_KEY) || LANG.en_GB.key);
 
 	const set = useCallback(candidateLanguage => {
-		if (!isString(candidateLanguage)) {
+		if (!isString(candidateLanguage) || lang === candidateLanguage) {
 			return;
 		}
 
 		setLang(candidateLanguage);
 		localStorage.setItem(LOCAL_STORAGE_LANG_KEY, candidateLanguage);
-	}, []);
+	}, [lang]);
 
 	const ling = useCallback(key => lingual(lang, key), [lang]);
 

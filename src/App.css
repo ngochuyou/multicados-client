@@ -61,3 +61,7 @@ code {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+.main-nav a {
+  min-height: 100% !important;
+}

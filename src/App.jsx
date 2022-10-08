@@ -1,18 +1,19 @@
 import './App.css';
 
-import AuthenticationContextProvider from './contexts/auth-context';
-import AlertContextProvider from './contexts/alert-context';
-import LanguageContextProvider from './contexts/lang-context';
+import { Outlet } from 'react-router-dom';
+
+import GlobalContext from './contexts/global-context';
+
+import Navbar from './components/controls/navs/Navbar';
 
 function App() {
 	return (
-		<LanguageContextProvider>
-			<AlertContextProvider>
-				<AuthenticationContextProvider>
-
-				</AuthenticationContextProvider>
-			</AlertContextProvider>
-		</LanguageContextProvider>
+		<GlobalContext>
+			<Navbar/>
+			<main className="uk-padding-small">
+				<Outlet/>
+			</main>
+		</GlobalContext>
 	);
 }
 

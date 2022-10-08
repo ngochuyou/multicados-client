@@ -1,3 +1,8 @@
 {
-	"fetch.UNABLE_TO_FETCH": "Unable to fetch"
+	"fetch.UNABLE_TO_FETCH": "Unable to fetch",
+	"nav.fav": "Your Choice",
+	"nav.sign_up_sign_in": "Sign Up & Sign In",
+	"nav.settings": "Settings",
+	"nav.settings.general": "General",
+	"nav.settings.general.lang": "Language"
 }

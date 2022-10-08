@@ -10,7 +10,7 @@ import Account from '../data/models/Account';
 import { useAlert, STYLES as ALERT_STYLES } from './alert-context';
 import { useLang } from './lang-context';
 
-import { UNABLE_TO_FETCH } from '../constants/messages/fetch';
+import { UNABLE_TO_FETCH } from '../constants/messages/libs/fetch';
 
 const AuthenticationContext = createContext({});
 
@@ -36,7 +36,9 @@ const doFetchPrincipal = async ({
 		return;
 	}
 
-	setPrincipal(new Account(principal));
+	if (principal != null) {
+		setPrincipal(new Account(principal));
+	}
 };
 
 export default function AuthenticationContextProvider({ children }) {

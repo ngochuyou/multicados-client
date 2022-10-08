@@ -1,11 +1,14 @@
+import { isFunction } from '../../utils/assertion-utils';
+
 export function NoFollow(props) {
 	const preventFollowClick = (event) => {
 		event.preventDefault();
 
 		const { onClick } = props;
 
-		if (typeof onClick === 'function') {
+		if (isFunction(onClick)) {
 			onClick(event);
+			return true;
 		}
 
 		return false;
