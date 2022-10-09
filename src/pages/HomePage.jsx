@@ -1,8 +1,8 @@
-import CustomerProductViewing from '../features/customer-product-viewing';
+import CustomerProductViewing from '../features/product/view';
 
 export default function HomePage() {
 	return (
-		<div className="uk-grid-small" uk-grid="">
+		<div>
 			<CustomerProductViewing />
 		</div>
 	);

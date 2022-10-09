@@ -2,9 +2,9 @@ import {
 	createContext, useContext, useCallback, useState
 } from 'react';
 
-import { LANG } from '../libs/lingual';
+import { LANG, JOHN_DOE } from '../libs/lingual';
 
-import { isString } from '../utils/assertion-utils';
+import { isString, isFunction } from '../utils/assertion-utils';
 
 import { ling as lingual } from '../libs/lingual';
 
@@ -28,7 +28,19 @@ export default function LanguageContextProvider({ children }) {
 
 	const ling = useCallback(key => lingual(lang, key), [lang]);
 
-	return <LanguageContext.Provider value={{ set, ling }}>
+	const lingFrom = useCallback((dictionary = {}) => {
+		const candidate = dictionary[lang];
+
+		if (isFunction(candidate)) {
+			return candidate();
+		}
+
+		return candidate != null ? candidate : JOHN_DOE;
+	}, [lang]);
+
+	return <LanguageContext.Provider value={{
+		set, ling, lingFrom
+	}}>
 		{ children }
 	</LanguageContext.Provider>;
 }

@@ -1,0 +1,1 @@
+export const FILTER_CATEGORY = "product.view.filter.category";
