@@ -18,8 +18,7 @@ export default function Filter() {
 		setCategoryList, init: initProductContext
 	} = useProduct();
 	const { push: pushAlert } = useAlert();
-	const { push: pushQuery } = useQuery();
-
+	
 	useEffect(() => {
 		const doFetch = async () => {
 			const [categories, err] = await getCategories();
@@ -47,7 +46,6 @@ export default function Filter() {
 				{
 					categories.map(category => (
 						<li
-							onClick={() => pushQuery("page", o => +o + 1)}
 							key={category.id} className="uk-margin pointer noselect"
 						>
 							<div className="uk-transition-toggle">
