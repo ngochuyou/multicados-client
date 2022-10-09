@@ -1,12 +1,12 @@
+import Filter from './components/Filter';
+
 export default function CustomerProductViewing() {
 	return (
-		<>
-			<section className="uk-width-1-4 uk-box-shadow">
-				Filter
-			</section>
+		<div className="uk-grid-small" uk-grid="">
+			<Filter />
 			<section className="uk-width-3-4">
 				Grid
 			</section>
-		</>
+		</div>
 	);
 }

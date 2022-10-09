@@ -3,6 +3,7 @@ import { isFunction } from '../utils/assertion-utils';
 import gbEnglish from '../assets/lang/en-GB';
 import vietnamese from '../assets/lang/vi-VN';
 
+export const JOHN_DOE = "John Doe";
 export const LANG = {
 	en_GB: {
 		key: "en-GB",
