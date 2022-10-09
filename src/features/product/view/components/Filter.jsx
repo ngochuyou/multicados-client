@@ -4,6 +4,8 @@ import { useLang  } from 'contexts/lang-context';
 import { useProduct } from 'contexts/product-context'
 import { useAlert, STYLES as ALERT_STYLES } from 'contexts/alert-context';
 
+import { useQuery } from 'hooks/location-hooks';
+
 import { FILTER_CATEGORY } from '../messages';
 import { UNABLE_TO_FETCH } from 'constants/messages/libs/fetch';
 
@@ -13,9 +15,10 @@ export default function Filter() {
 	const { ling, lingFrom } = useLang();
 	const {
 		category: { list: categories },
-		setCategoryList
+		setCategoryList, init: initProductContext
 	} = useProduct();
 	const { push: pushAlert } = useAlert();
+	const { push: pushQuery } = useQuery();
 
 	useEffect(() => {
 		const doFetch = async () => {
@@ -33,7 +36,9 @@ export default function Filter() {
 		};
 
 		doFetch();
-	}, [setCategoryList, pushAlert, ling]);
+
+		return initProductContext;
+	}, [setCategoryList, pushAlert, ling, initProductContext]);
 
 	return (
 		<section className="uk-width-1-4 uk-box-shadow">
@@ -42,6 +47,7 @@ export default function Filter() {
 				{
 					categories.map(category => (
 						<li
+							onClick={() => pushQuery("page", o => +o + 1)}
 							key={category.id} className="uk-margin pointer noselect"
 						>
 							<div className="uk-transition-toggle">
